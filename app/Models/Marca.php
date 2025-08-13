@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Marca extends Model
 {
-    use HasFactory;
+    protected $table = 'marca';
+    protected $primaryKey = 'id_marca';
+    public $timestamps = false;
+
+    protected $fillable = ['nombre_marca'];
+
+    public function modelos()
+    {
+        return $this->hasMany(Modelo::class, 'id_marca', 'id_marca');
+    }
 }
